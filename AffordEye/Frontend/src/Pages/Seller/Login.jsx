@@ -23,7 +23,7 @@ import {
   InputRightElement
 } from "@chakra-ui/react";
 
-const Login = (props) => {
+const SellerLogin = (props) => {
   const [loading, setLoading] = useState(false);
   const [btn, setbtn] = useState();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -56,12 +56,11 @@ const Login = (props) => {
 
   const getData = async () => {
     try {
-      console.log(process.env.admin)
       setLoading(true);
       setinCorrect(false);
       if (loginData.email !== "" && loginData.password !== "") {
         const res = await fetch(
-          "http://localhost:5000/user/login",
+          "http://localhost:5000/seller/login",
           {
             method: "POST",
             body: JSON.stringify(loginData),
@@ -73,14 +72,14 @@ const Login = (props) => {
         let data = await res.json();
         if (res) {
           const credential = await fetch(
-            "http://localhost:5000/user"
+            "http://localhost:5000/seller"
           );
           let cred = await credential.json();
           localStorage.setItem("token", data.token);
           res1 = cred.filter((el) => el.email === loginData.email);
           setisAuth(true);
           setAuthData(res1);
-          if (loginData.email.includes(process.env.admin)) {
+          if (true) {
             setLoading(false);
             setinCorrect(false);
             onClose();
@@ -117,7 +116,7 @@ const Login = (props) => {
   return (
     <div>
       <Center onClick={onOpen} fontWeight={"400"} fontSize="15px" w="80px">
-        Sign In
+        Seller
       </Center>
 
       <Modal
@@ -294,4 +293,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default SellerLogin;

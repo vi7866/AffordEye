@@ -17,7 +17,7 @@ userRouter.get("/", async (req, res) => {
 });
 
 userRouter.post("/register", async (req, res) => {
-  const { email, password, first_name, last_name, ph_no } = req.body;
+  const { email, password, first_name, last_name, ph_no,gst_no } = req.body;
   try {
     bcrypt.hash(password, 5, async (err, secure_password) => {
       if (err) {
@@ -48,7 +48,7 @@ userRouter.post("/login", async (req, res) => {
     if (user.length > 0) {
       bcrypt.compare(password, hashed_password, (err, result) => {
         if (result) {
-          const token = jwt.sign({ userID: user[0]._id }, "masai");
+          const token = jwt.sign({ userID: user[0]._id }, "1h");
           res.send({ msg: "Login Successful", token: token });
         } else {
           res.send("Wrong Credential");

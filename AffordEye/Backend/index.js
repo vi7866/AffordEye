@@ -5,6 +5,7 @@ const { productRouter } = require("./routes/product.routes");
 const { cartRouter } = require("./routes/cart.routes");
 require("dotenv").config();
 const cors = require("cors");
+const { sellerRouter } = require("./routes/seller.routes");
 
 const app = express();
 app.use(
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
+app.use("/seller", sellerRouter);
 
 app.listen(process.env.port, async () => {
   try {

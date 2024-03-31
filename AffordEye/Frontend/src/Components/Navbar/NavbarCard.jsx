@@ -25,6 +25,7 @@ import {
   PopoverContent,
   PopoverBody
 } from "@chakra-ui/react";
+import SellerLogin from "../../Pages/Seller/Login";
 
 export const NavbarCard1 = () => {
   return (
@@ -128,6 +129,9 @@ export const NavbarCard2 = () => {
                 <Signup />
               </Box>
             )}
+            <Box display={"flex"}>
+                <SellerLogin />
+              </Box>
             <Button
               leftIcon={<CiHeart />}
               size="lg"
