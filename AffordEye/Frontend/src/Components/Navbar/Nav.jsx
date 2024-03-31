@@ -201,7 +201,7 @@ function Nav() {
                       color="black"
                       _hover={{ fontWeight: "bold" }}
                     >
-                      Product Post
+                      Seller
                     </Box>
                   </Link>
                   <Link>
